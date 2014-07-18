@@ -54,12 +54,11 @@ namespace OrderFood
                         // Trim any extra whitespace from the dish request.
                         string cleanDishRequest = dishRequest.Trim();
 
-                        // Check that the dish request is an integer and that
-                        // it corresponds to a valid dish type:
+                        // Check that the dish request corresponds to a valid 
+                        // dish type:
                         // 1 (entrée), 2 (side), 3 (drink), or 4 (dessert).
-                        int result;
-                        if (int.TryParse(cleanDishRequest, out result) && Enum.IsDefined(typeof(DishType), result)
-                                && (DishType)result != DishType.InvalidDishType)
+                        DishType result;
+                        if (Enum.TryParse(cleanDishRequest, out result))
                         {
                             sortedDishRequests.Add((DishType)result);
                         }
